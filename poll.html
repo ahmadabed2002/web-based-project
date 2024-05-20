@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+     
+        
+    </style>
+
+</head>
+<body>
+    <header class="container">
+        <nav>
+            <ul>
+                <li><a href="HomePage.html">Home</a></li>
+                <li><a href="AboutUs.Html">About Us</a></li>
+                <li><a href="boycott.html">boycott</a></li>
+                <li><a href="Resources.html">Resources</a></li>
+                <li><a href="Reviews.html">Reviews</a></li>
+                <li><a href="DonationPage.html">Donate</a></li>
+                <li><a href="ContactUs.html">Contact Us</a></li>
+                <li><a href="moreinformation.html">more information</a></li>
+                <li><a href="poll.html">poll</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+  
+</body>
+</html>
+<title>Form with Validation and Calculations</title>
+<style>
+  /* Basic styling */
+  body {
+    font-family: Arial, sans-serif;
+  }
+  form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  input[type="text"],
+  input[type="number"],
+  textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  .error {
+    color: red;
+    font-size: 0.8em;
+  }
+  #report {
+    width: 100%;
+    height: 100px;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+  }
+</style>
+</head>
+<body>
+
+<h2>Date and Time: <span id="datetime"></span></h2>
+
+<form id="myForm" onsubmit="return validateForm()">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required>
+  <span class="error" id="nameError"></span>
+
+  <label for="age">Age:</label>
+  <input type="number" id="age" name="age" required>
+  <span class="error" id="ageError"></span>
+
+  <label for="email">Email:</label>
+  <input type="text" id="email" name="email" required>
+  <span class="error" id="emailError"></span>
+
+  <label for="income">Income:</label>
+  <input type="number" id="income" name="income" required>
+  <span class="error" id="incomeError"></span>
+
+  <label>Gender:</label>
+  <input type="radio" name="gender" value="male" required> Male
+  <input type="radio" name="gender" value="female"> Female
+  <input type="radio" name="gender" value="other"> Other
+  <span class="error" id="genderError"></span>
+
+  <label>Interests:</label>
+  <input type="checkbox" name="interests" value="sports"> Sports
+  <input type="checkbox" name="interests" value="music"> Music
+  <input type="checkbox" name="interests" value="reading"> Reading
+  <span class="error" id="interestsError"></span>
+
+  <label for="message">Message:</label>
+  <textarea id="message" name="message"></textarea>
+  <span class="error" id="messageError"></span>
+
+  <input type="submit" value="Submit">
+</form>
+
+<textarea id="report" readonly></textarea>
+
+<script>
+function validateForm() {
+  // Reset error messages
+  document.querySelectorAll('.error').forEach(error => error.textContent = '');
+
+  const name = document.getElementById('name').value.trim();
+  const age = parseInt(document.getElementById('age').value);
+  const email = document.getElementById('email').value.trim();
+  const income = parseInt(document.getElementById('income').value);
+  const gender = document.querySelector('input[name="gender"]:checked');
+  const interests = document.querySelectorAll('input[name="interests"]:checked');
+  const message = document.getElementById('message').value.trim();
+
+  let valid = true;
+
+  // Validation rules
+  if (name === '') {
+    document.getElementById('nameError').textContent = 'Name is required';
+    valid = false;
+  }
+
+  if (isNaN(age) || age <= 0) {
+    document.getElementById('ageError').textContent = 'Age must be a valid number';
+    valid = false;
+  }
+
+  if (!email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)) {
+    document.getElementById('emailError').textContent = 'Email is not valid';
+    valid = false;
+  }
+
+  if (isNaN(income) || income <= 0) {
+    document.getElementById('incomeError').textContent = 'Income must be a valid number';
+    valid = false;
+  }
+
+  if (!gender) {
+    document.getElementById('genderError').textContent = 'Gender is required';
+    valid = false;
+  }
+
+  if (interests.length === 0) {
+    document.getElementById('interestsError').textContent = 'At least one interest must be selected';
+    valid = false;
+  }
+
+  if (message === '') {
+    document.getElementById('messageError').textContent = 'Message is required';
+    valid = false;
+  }
+
+  // If all fields are valid, generate report
+  if (valid) {
+    const report = `Name: ${name}\nAge: ${age}\nEmail: ${email}\nIncome: ${income}\nGender: ${gender.value}\nInterests: ${[...interests].map(i => i.value).join(', ')}\nMessage: ${message}`;
+    document.getElementById('report').value = report;
+  }
+
+  return valid;
+}
+
+// Update date and time
+function updateDateTime() {
+  const now = new Date();
+  const datetime = now.toLocaleString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true });
+  document.getElementById('datetime').textContent = datetime;
+}
+
+// Update date and time every second
+setInterval(updateDateTime, 1000);
+
+// Initial update
+updateDateTime();
+</script>
+
+</body>
+</html>

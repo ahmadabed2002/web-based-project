@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+       .container {
+            /* display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; */
+          
+        }
+        .donation-container {
+            border: 2px solid darkblack;
+            padding: 20px;
+            background-color: aliceblue;
+            display: flex;
+            align-items: center;
+
+            border-top-style: solid;
+            border-bottom: solid;
+            border-right-style: solid;
+            border-left-style: solid;
+        }
+        .donation-form {
+            flex: 1;
+            padding-right: 20px;
+            
+        }
+        .donation-image {
+            /* flex: 1; */
+            /* text-align: center; */
+        }
+        .donation-image img {
+            max-width: 100%;
+            height: auto;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 10px;
+        }
+        input[type="text"],
+        input[type="email"] {
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #fc036b;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: black;
+        }
+        a{
+            padding: 8px 15px;
+            background-color: #fc036b;
+            border-radius: 30px;
+            color: white;
+        }
+        body{
+            background-color:aliceblue ;
+        }
+        
+    </style>
+
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="HomePage.html">Home</a></li>
+                <li><a href="AboutUs.Html">About Us</a></li>
+                <li><a href="boycott.html">boycott</a></li>
+                <li><a href="Resources.html">Resources</a></li>
+                <li><a href="Reviews.html">Reviews</a></li>
+                <li><a href="DonationPage.html">Donate</a></li>
+                <li><a href="ContactUs.html">Contact Us</a></li>
+                <li><a href="poll.html">poll</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container mt-2">
+       <div class="">
+        <h2>Date and Time: <span id="datetime"></span></h2>
+       </div>
+        <div class="donation-container">
+            <div class="donation-form">
+                <h2>Make a Donation :-</h2>
+                <form action="#" method="POST">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="donation value ;" ><b>Donation value (JD):</b></label>
+                        </div>
+                        <div class="col-6">
+                            <span class="text-danger" style=" display: inline;" id="donationMsg" hidden>required</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="number" id="donation" name="donation" placeholder="Enter value" class="form-control" onchange="CalculateDollar()">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="name"><b>Name:</b></label>
+                        </div>
+                        <div class="col-6">
+                            <span class="text-danger" style="display: inline;" id="NameMsg" hidden>required</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="text" id="name" name="name" placeholder="Your name"  class="form-control">
+                        </div>
+                    </div>
+                    <!-- Age section -->
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="age" >Age:</label>
+                        </div>
+                        <div class="col-6">
+                            <span class="text-danger" style="display: inline;" id="AgeMsg" hidden>required</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="number" id="age" name="age" class="form-control">
+                        </div>
+                    </div>
+                    <!-- Email section -->
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="email"><b>Email:</b></label>
+                        </div>
+                        <div class="col-6">
+                            <span class="text-danger" style="display: inline;" id="EmailMsg" hidden>required</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="email" id="email" name="email1" placeholder="your email" class="form-control">
+                        </div>
+                    </div>
+                    
+                     <!-- confirm Email section -->
+                     <div class="row">
+                        <div class="col-6">
+                            <label for="email"><b>Confirm Email:</b></label>
+                        </div>
+                        <div class="col-6">
+                            <span class="text-danger" style="display: inline;" id="ConfirmEmailMsg" hidden>Email does not match</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="email" id="ConfirmEmail" name="ConfirmEmail" placeholder="your email" class="form-control">
+                        </div>
+                    </div>
+
+                    <!-- password section -->
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="Password"><b>Password:</b></label>
+                        </div>
+                        <div class="col-6">
+                            <span class="text-danger" style="display: inline;" id="PasswordMsg" hidden>required</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="Password" id="Password" name="Password" placeholder="Your Password"   class="form-control"><br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">
+                            <label><b>Gender:</b></label>
+                        </div>
+                        <div class="col-4">
+                            <input type="radio" name="gender" value="male" > Male
+                        </div>
+                        <div class="col-3">
+                            <input type="radio" name="gender" value="female"> Female
+                        </div>
+                        <div class="col-2">
+                            <span class="text-danger" style="display: inline;" id="GenderMsg" hidden>required</span>
+                        </div>
+                    </div>
+                    
+                    <!-- <p>Confirm Email<input type="email" name="email2" id="email2">  <span id="message" style="color: red;"> </span><br> -->
+                    
+                </form>
+                <button  onclick="validateForm()">Donate Now</button>
+            
+                    
+            </div>
+            <div class="donation-image">
+                <div class="row">
+                    <div class="col mt-3">
+                        <label ><b>Donation (Dollar)</b></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <input type="number" id="DollarDonation" name="donation" placeholder="$" class="form-control" disabled>
+                    </div>
+                </div>
+                <div class="row mt-2" >
+                    <img src="Donate.jpeg" alt="Donate Image" style="width: 500px;">
+                </div>
+                <div class="row mt-2 " >
+                    <textarea cols="70" rows="10" disabled id="textareaDiv">
+                        
+                    </textarea>
+                    <!-- <img src="Donate.jpeg" alt="Donate Image" style="width: 500px;" > -->
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Your Organization</p>
+    </footer>
+</body>
+</html>
+
+
+
+<script >
+
+    function validateForm() { 
+        debugger
+        var valid = true;
+        
+        var donationAmount = document.getElementById("donation").value;
+        var validAmount = CheckIfDonationIsValid(donationAmount);
+        valid = validAmount;
+        
+
+
+        var name = document.getElementById('name').value;
+        var validName = CheckIfValidName(name);
+        valid = valid && validName;
+
+        var age = document.getElementById("age").value;
+        var validAge = CheckIfValidAge(age);
+        valid = valid && validAge;
+
+        var email = document.getElementById('email').value;
+        var validEmail = CheckIFEmailValid(email);
+        valid = valid && validEmail;
+
+        var confirmEMail = document.getElementById("ConfirmEmail").value;
+        var validSecondEmail = CheckIfEmailsAreEqual(email, confirmEMail);
+        valid = valid && validSecondEmail;
+
+        var password = document.getElementById("Password").value;
+        var validPass = CheckIfValidPassword(password);
+        valid = valid && validPass;
+
+        if(document.querySelector('input[name="gender"]:checked') == null){
+            document.getElementById("GenderMsg").hidden = false;
+            valid = valid && false;
+        }else{
+            document.getElementById('GenderMsg').hidden = true;
+            valid = valid && true;
+        }
+
+
+        if(!valid){
+            return false;
+        }
+        else{
+            var donationDollar = document.getElementById("DollarDonation").value;
+            document.getElementById('textareaDiv').innerHTML = "Name: "+name+".\n"+"Age: "+age+".\n"+"Email: "+email+"\n"+"Donation Amount (JD): "+donationAmount+ ".\nDonation Amount (Dollar): "+donationDollar;
+        }
+      
+    }
+    function CheckIfDonationIsValid(_Amount){
+        var valid = true;
+        if(_Amount == "" || _Amount == undefined){
+            document.getElementById('donationMsg').hidden = false;
+            document.getElementById('donationMsg').innerHTML = 'required';
+            valid = false;
+        }
+        else if(_Amount < 1){
+            document.getElementById("donationMsg").hidden = false;
+            document.getElementById('donationMsg').innerHTML = 'The value must be greater or equal than 1';
+            valid = false;
+        }
+        else{
+            document.getElementById("donationMsg").hidden = true;
+        }
+        return valid;
+    }
+
+    function CheckIfValidName(_name){
+        var valid = true
+        if(_name == "" || _name == undefined){
+            document.getElementById("NameMsg").hidden = false;
+            valid = false;
+        }
+        else{
+            document.getElementById("NameMsg").hidden = true;
+        }
+        return valid;
+    }
+
+    function CheckIfValidAge(_age){
+        var valid = true;
+        if(_age == "" || _age == undefined){
+            document.getElementById('AgeMsg').hidden = false;
+            document.getElementById("AgeMsg").innerHTML = "required";
+            valid = false;
+        }
+        else if (_age < 18){
+            document.getElementById("AgeMsg").hidden = false;
+            document.getElementById("AgeMsg").innerHTML = "The Age must be greater or equal than 18";
+            valid = false;
+        }
+        else {
+            document.getElementById("AgeMsg").hidden = true;
+            valid = true;
+        }
+        return valid;
+    }
+    function CheckIFEmailValid(_email){
+        var valid = true;
+        if(_email == "" || _email == undefined){
+            document.getElementById("EmailMsg").hidden = false;
+            document.getElementById('EmailMsg').innerHTML = "required";
+            valid = false;
+        }
+        else if(!_email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)){
+            document.getElementById("EmailMsg").hidden = false;
+            document.getElementById("EmailMsg").innerHTML = "Email is not valid";
+            valid = false;
+        }
+        else{
+            document.getElementById("EmailMsg").hidden = true;
+            valid = true;
+        }
+        return valid;
+    }
+
+    function CheckIfEmailsAreEqual(_email, _secondEmail){
+        var valid = true;
+        if(_email != _secondEmail){
+            document.getElementById("ConfirmEmailMsg").hidden = false;
+            valid = false;
+        }else{
+            document.getElementById("ConfirmEmailMsg").hidden = true;
+            valid = true;
+        }
+        return valid;
+
+    }
+
+    function CheckIfValidPassword(_pass){
+        var valid = true;
+        if(_pass == "" || _pass == undefined){
+            document.getElementById("PasswordMsg").hidden = false;
+            valid = false;
+        }
+        else{
+            document.getElementById("PasswordMsg").hidden = true;
+            valid = true;
+        }
+        return valid;
+    }
+
+    function CalculateDollar(){
+        debugger
+        var donation = document.getElementById("donation").value;
+        if(donation != ""){
+            document.getElementById("DollarDonation").value = parseInt(donation)*0.71 ;
+        }
+    }
+    // Update date and time
+    function updateDateTime() {
+      const now = new Date();
+      const datetime = now.toLocaleString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true });
+      document.getElementById('datetime').textContent = datetime;
+    }
+    
+    // Update date and time every second
+    setInterval(updateDateTime, 1000);
+    
+    // Initial update
+    updateDateTime();
+    </script>

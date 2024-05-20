@@ -1,0 +1,146 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    
+}
+
+header {
+    background-color: #000000; /* Background color for the header */
+    padding: 20px 0;
+    text-align: center;
+}
+
+nav {
+    background-color: #000000; /* Background color for the menu */
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+a{
+    padding: 15px 15px;
+    background-color: #fc036b;
+    border-radius: 50px;
+    color: white;
+}
+.founders {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+    margin-top: 150px;
+    margin-bottom: 100px;
+    color: #000;
+}
+
+.founder {
+    margin: 10px 40px;
+    padding: 20PX;
+}
+
+.founder img {
+    border-radius: 50%;
+    width: 150px;
+}
+
+.social-media .whatsapp i {
+    font-size: 35px;
+    color: #117704;
+    transition: .3s;
+}
+
+.social-media .instagram i {
+    font-size: 35px;
+    color: #770464;
+    transition: .3s;
+}
+
+.social-media a i:hover {
+    transform: scale(1.2);
+}
+
+
+
+.about-us {
+    background-color: black ;
+    padding: 40px;
+}
+
+.about-us h2 {
+    text-align: center;
+    color: black ;
+    padding: 20px;
+    background-color: #fc036b ;
+    border-radius: 20px
+}
+
+.about-us p {
+    color: #fff;
+    padding: 20px;
+    text-align: justify;
+    line-height: 1.5;
+
+}
+
+.about-us p a {
+    color: #fff;
+    transition: .3s;
+}
+
+.about-us p a:hover {
+    color: #FF9800;
+}
+
+
+
+.feedbacks {
+    padding: 80px;
+    margin: 0 10%;
+}
+
+.feedbacks h2 {
+    padding: 40px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.feedback-content {
+    flex-wrap: wrap;
+}
+
+.feedback img {
+    border-radius: 50%;
+    width: 100px;
+}
+
+.feedback {
+    margin: 20px 40px;
+    border: 1px solid #000;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.feedback p {
+    font-size: 20px;
+}
+
+.rating {
+    color: #f8b600;
+    font-size: 30px;
+}
